@@ -48,6 +48,15 @@ public class RangeSliderThumbLayer: CALayer {
     /// owner slider
     weak var rangeSlider: NHRangeSlider?
     
+    /// show shadow thumbs
+    @IBInspectable open var shadow: Bool = false {
+        didSet {
+            shadowOpacity = shadow ? 0.25 : 0
+            shadowOffset = shadow ? CGSize(width: 0, height: 1) : .zero
+            shadowRadius = shadow ? 2 : 0
+        }
+    }
+
     /// whether this thumb is currently highlighted i.e. touched by user
     public var highlighted: Bool = false {
         didSet {
@@ -208,7 +217,9 @@ open class NHRangeSlider: UIControl {
     @IBInspectable open var thumbBorderWidth: CGFloat = 0.5 {
         didSet {
             lowerThumbLayer.lineWidth = thumbBorderWidth
+            lowerThumbLayer.shadow = thumbBorderWidth == 0
             upperThumbLayer.lineWidth = thumbBorderWidth
+            upperThumbLayer.shadow = thumbBorderWidth == 0
         }
     }
     
