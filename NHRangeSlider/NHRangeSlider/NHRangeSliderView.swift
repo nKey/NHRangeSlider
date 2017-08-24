@@ -118,6 +118,12 @@ open class NHRangeSliderView: UIView {
         }
     }
     
+    // track Line thickness
+    @IBInspectable open var thickness: CGFloat = 2.0 {
+        didSet {
+            self.rangeSlider?.thickness = thickness
+        }
+    }
     
     /// track highlight tint color
     @IBInspectable open var trackHighlightTintColor: UIColor = UIColor(red: 0.0, green: 0.45, blue: 0.94, alpha: 1.0) {
